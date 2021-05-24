@@ -483,8 +483,8 @@
 
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="box" data-aos="zoom-in">
+          <div class="col-lg-4 col-md-6">
+            <div class="box featured" data-aos="zoom-in">
               <h3>Arial Photography</h3>
               <h4><sup>$</sup>220</h4>
               <ul>
@@ -494,43 +494,49 @@
                 <li class="na">Pharetra massa</li>
                 <li class="na">Massa ultricies mi</li>
               </ul>
-              <div class="btn-wrap">
+              <!-- <div class="btn-wrap">
                 <a href="#" class="btn-buy">Buy Now</a>
-              </div>
+              </div> -->
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+          <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
             <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
               <h3>Interior Photography</h3>
-              <h4><sup>$</sup>200+</h4>
+              <h4 id="interior-price"><sup>$</sup>200</h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <label for="sqft">Sq Footage:</label>
+                <select name="sqft" id="interior-sqft" onchange="updateInteriorPrice()">
+                  <option value="under-2000" selected="selected">Under 2000</option>
+                  <option value="2000-4999">2000-4999</option>
+                  <option value="5000+">5000+</option>
+                </select> 
               </ul>
-              <div class="btn-wrap">
+              <!-- <div class="btn-wrap">
                 <a href="#" class="btn-buy">Buy Now</a>
-              </div>
+              </div> -->
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="zoom-in" data-aos-delay="200">
+          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+            <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
               <h3>Virtural Tours</h3>
-              <h4><sup>$</sup>329+</h4>
+              <h4 id="virtural-price"><sup>$</sup>329</h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <label for="sqft">Sq Footage:</label>
+                <select name="sqft" id="virtural-sqft" onchange="updateVirturalPrice()">
+                  <option value="under-1000" selected="selected">Under 1000</option>
+                  <option value="1001-2000">1001-2000</option>
+                  <option value="2001-3000">2001-3000</option>
+                  <option value="3001-4000">3001-4000</option>
+                  <option value="4001-5000">4001-5000</option>
+                  <option value="5000+">5000+</option>
+
+                </select> 
               </ul>
-              <div class="btn-wrap">
+              <!-- <div class="btn-wrap">
                 <a href="#" class="btn-buy">Buy Now</a>
-              </div>
+              </div> -->
             </div>
           </div>
 
@@ -712,6 +718,60 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script>
+    function updateVirturalPrice() {
+      let x = document.getElementById("virtural-sqft").value;
+      let price = 0
+
+      switch (x) {
+        case "under-1000":
+          price = "<sup>$</sup>329"
+          break;
+          case "1001-2000":
+          price = "<sup>$</sup>379"
+          break;
+          case "2001-3000":
+          price = "<sup>$</sup>429"
+          break;
+          case "3001-4000":
+          price = "<sup>$</sup>479"
+          break;
+          case "4001-5000":
+          price = "<sup>$</sup>529"
+          break;
+          case "5000+":
+          price = "<sup>$</sup>579"
+          break;
+      
+        default:
+          break;
+      }
+      document.getElementById("virtural-price").innerHTML = `${price}`;
+
+    }
+
+    function updateInteriorPrice() {
+      let x = document.getElementById("interior-sqft").value;
+      let price = 0
+      switch (x) {
+        case "under-2000":
+          price = "<sup>$</sup>200"
+          break;
+          case "2000-4999":
+          price = "<sup>$</sup>260"
+          break;
+          case "5000+":
+          price = "Call for Price"
+          break;
+      
+        default:
+          break;
+      }
+      
+      document.getElementById("interior-price").innerHTML = `${price}`;
+
+    }
+  </script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
